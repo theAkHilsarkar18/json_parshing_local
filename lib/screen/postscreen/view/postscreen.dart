@@ -27,7 +27,7 @@ class _PostscreenState extends State<Postscreen> {
           actions: [
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text("Json+",style: GoogleFonts.poppins(fontWeight: FontWeight.w500,fontSize: 22)),
+              child: Text("Post+",style: GoogleFonts.poppins(fontWeight: FontWeight.w500,fontSize: 22)),
             ),
           ],
         ),
