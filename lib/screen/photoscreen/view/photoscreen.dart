@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:json_parshing_local/screen/commentscreen/provider/commentprovider.dart';
+import 'package:json_parshing_local/screen/photoscreen/provider/photoprovider.dart';
 import 'package:provider/provider.dart';
 
-class Commentscreen extends StatefulWidget {
-  const Commentscreen({Key? key}) : super(key: key);
+class Photoscreen extends StatefulWidget {
+  const Photoscreen({Key? key}) : super(key: key);
 
   @override
-  State<Commentscreen> createState() => _CommentscreenState();
+  State<Photoscreen> createState() => _PhotoscreenState();
 }
 
-class _CommentscreenState extends State<Commentscreen> {
+class _PhotoscreenState extends State<Photoscreen> {
   @override
   Widget build(BuildContext context) {
-
-    Commentprovider commentproviderTrue = Provider.of(context,listen: true);
-    Commentprovider commentproviderFalse = Provider.of(context,listen: false);
+    Photoprovider photoproviderTrue = Provider.of(context, listen: true);
+    Photoprovider photoproviderFalse = Provider.of(context, listen: false);
 
     return SafeArea(
       child: Scaffold(
@@ -25,7 +24,7 @@ class _CommentscreenState extends State<Commentscreen> {
           actions: [
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text("Comment+",style: GoogleFonts.poppins(fontWeight: FontWeight.w500,fontSize: 22)),
+              child: Text("Photo+",style: GoogleFonts.poppins(fontWeight: FontWeight.w500,fontSize: 22)),
             ),
           ],
         ),
@@ -36,13 +35,13 @@ class _CommentscreenState extends State<Commentscreen> {
                 padding: const EdgeInsets.all(8.0),
                 child: ListTile(
                   shape: OutlineInputBorder(borderSide: BorderSide(color: Colors.black)),
-                  leading: Text("${commentproviderTrue.commentList[index].id}"),
-                  trailing: Text("${commentproviderTrue.commentList[index].postId}"),
-                  title: Text("${commentproviderTrue.commentList[index].name}"),
-                  subtitle: Text("${commentproviderTrue.commentList[index].email}"),
+                  leading: Text("${photoproviderTrue.photoList[index].id}"),
+                  trailing: Text("${photoproviderTrue.photoList[index].albumId}"),
+                  title: Text("${photoproviderTrue.photoList[index].title}"),
+                  subtitle: Text("${photoproviderTrue.photoList[index].url}"),
                 ),
               ),
-              itemCount: commentproviderTrue.commentList.length,
+              itemCount: photoproviderFalse.photoList.length,
             ),
             Align(
               alignment: Alignment.bottomCenter,
@@ -50,7 +49,7 @@ class _CommentscreenState extends State<Commentscreen> {
                 padding: const EdgeInsets.all(18.0),
                 child: FloatingActionButton(onPressed: () {
 
-                  commentproviderFalse.CommentJsonParshing();
+                  photoproviderFalse.photoJsonParshing();
 
                 },child: Text("Json",style: GoogleFonts.poppins(fontWeight: FontWeight.w600),),backgroundColor: Colors.teal),
               ),

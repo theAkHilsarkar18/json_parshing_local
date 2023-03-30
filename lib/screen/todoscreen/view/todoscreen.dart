@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:json_parshing_local/screen/commentscreen/provider/commentprovider.dart';
 import 'package:provider/provider.dart';
 
-class Commentscreen extends StatefulWidget {
-  const Commentscreen({Key? key}) : super(key: key);
+import '../provider/todoprovider.dart';
+
+class Todoscreen extends StatefulWidget {
+  const Todoscreen({Key? key}) : super(key: key);
 
   @override
-  State<Commentscreen> createState() => _CommentscreenState();
+  State<Todoscreen> createState() => _TodoscreenState();
 }
 
-class _CommentscreenState extends State<Commentscreen> {
+class _TodoscreenState extends State<Todoscreen> {
   @override
   Widget build(BuildContext context) {
 
-    Commentprovider commentproviderTrue = Provider.of(context,listen: true);
-    Commentprovider commentproviderFalse = Provider.of(context,listen: false);
+    Todoprovider todoproviderTrue = Provider.of(context,listen: true);
+    Todoprovider todoproviderFalse = Provider.of(context,listen: false);
+
 
     return SafeArea(
       child: Scaffold(
@@ -25,7 +27,7 @@ class _CommentscreenState extends State<Commentscreen> {
           actions: [
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text("Comment+",style: GoogleFonts.poppins(fontWeight: FontWeight.w500,fontSize: 22)),
+              child: Text("Todo+",style: GoogleFonts.poppins(fontWeight: FontWeight.w500,fontSize: 22)),
             ),
           ],
         ),
@@ -36,13 +38,13 @@ class _CommentscreenState extends State<Commentscreen> {
                 padding: const EdgeInsets.all(8.0),
                 child: ListTile(
                   shape: OutlineInputBorder(borderSide: BorderSide(color: Colors.black)),
-                  leading: Text("${commentproviderTrue.commentList[index].id}"),
-                  trailing: Text("${commentproviderTrue.commentList[index].postId}"),
-                  title: Text("${commentproviderTrue.commentList[index].name}"),
-                  subtitle: Text("${commentproviderTrue.commentList[index].email}"),
+                  leading: Text("${todoproviderTrue.todoList[index].id}"),
+                  trailing: Text("${todoproviderTrue.todoList[index].userId}"),
+                  title: Text("${todoproviderTrue.todoList[index].title}"),
+                  subtitle: Text("${todoproviderTrue.todoList[index].completed}"),
                 ),
               ),
-              itemCount: commentproviderTrue.commentList.length,
+              itemCount: todoproviderTrue.todoList.length,
             ),
             Align(
               alignment: Alignment.bottomCenter,
@@ -50,7 +52,7 @@ class _CommentscreenState extends State<Commentscreen> {
                 padding: const EdgeInsets.all(18.0),
                 child: FloatingActionButton(onPressed: () {
 
-                  commentproviderFalse.CommentJsonParshing();
+                  todoproviderFalse.todoJsonParshing();
 
                 },child: Text("Json",style: GoogleFonts.poppins(fontWeight: FontWeight.w600),),backgroundColor: Colors.teal),
               ),

@@ -35,11 +35,15 @@ class _PostscreenState extends State<Postscreen> {
           children: [
             ListView.builder(
               itemCount: postproviderTrue.postList.length,
-              itemBuilder: (context, index) => ListTile(
-                leading: Text("${postproviderTrue.postList[index].id}"),
-                title: Text("${postproviderTrue.postList[index].title}"),
-                subtitle: Text("${postproviderTrue.postList[index].body}"),
-                trailing: Text("${postproviderTrue.postList[index].userId}"),
+              itemBuilder: (context, index) => Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ListTile(
+                  shape: OutlineInputBorder(borderSide: BorderSide(color: Colors.black)),
+                  leading: Text("${postproviderTrue.postList[index].id}"),
+                  title: Text("${postproviderTrue.postList[index].title}"),
+                  subtitle: Text("${postproviderTrue.postList[index].body}"),
+                  trailing: Text("${postproviderTrue.postList[index].userId}"),
+                ),
               ),
             ),
             Align(

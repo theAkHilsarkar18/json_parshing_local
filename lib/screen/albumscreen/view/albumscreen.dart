@@ -32,11 +32,14 @@ class _AlbumscreenState extends State<Albumscreen> {
         body: Stack(
           children: [
             ListView.builder(
-              itemBuilder: (context, index) => ListTile(
-                shape: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
-                leading: Text("${albumproviderTrue.albumList[index].id}"),
-                title: Text("${albumproviderTrue.albumList[index].title}"),
-                subtitle: Text("${albumproviderTrue.albumList[index].userId}"),
+              itemBuilder: (context, index) => Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ListTile(
+                  shape: OutlineInputBorder(borderSide: BorderSide(color: Colors.black)),
+                  leading: Text("${albumproviderTrue.albumList[index].id}"),
+                  title: Text("${albumproviderTrue.albumList[index].title}"),
+                  subtitle: Text("${albumproviderTrue.albumList[index].userId}"),
+                ),
               ),
               itemCount: albumproviderTrue.albumList.length,
             ),

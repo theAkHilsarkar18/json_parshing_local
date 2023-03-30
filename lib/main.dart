@@ -6,8 +6,11 @@ import 'package:json_parshing_local/screen/basescreen/provider/baseprovider.dart
 import 'package:json_parshing_local/screen/basescreen/view/basescreen.dart';
 import 'package:json_parshing_local/screen/commentscreen/provider/commentprovider.dart';
 import 'package:json_parshing_local/screen/commentscreen/view/commentscreen.dart';
+import 'package:json_parshing_local/screen/photoscreen/provider/photoprovider.dart';
 import 'package:json_parshing_local/screen/postscreen/provider/postprovider.dart';
 import 'package:json_parshing_local/screen/postscreen/view/postscreen.dart';
+import 'package:json_parshing_local/screen/todoscreen/provider/todoprovider.dart';
+import 'package:json_parshing_local/screen/todoscreen/view/todoscreen.dart';
 import 'package:json_parshing_local/screen/userscreen/provider/userprovider.dart';
 import 'package:json_parshing_local/screen/userscreen/view/userscreen.dart';
 import 'package:provider/provider.dart';
@@ -22,6 +25,8 @@ void main()
         ChangeNotifierProvider(create: (context) => Albumprovider(),),
         ChangeNotifierProvider(create: (context) => Baseprovider(),),
         ChangeNotifierProvider(create: (context) => Commentprovider(),),
+        ChangeNotifierProvider(create: (context) => Photoprovider(),),
+        ChangeNotifierProvider(create: (context) => Todoprovider(),),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -31,6 +36,7 @@ void main()
           'post' : (context) => Postscreen(),
           'user' : (context) => Userscreen(),
           'comment' : (context) => Commentscreen(),
+          'comment' : (context) => Todoscreen(),
         },
       ),
     ),
